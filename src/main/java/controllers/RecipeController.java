@@ -17,7 +17,7 @@ public class RecipeController {
     public Ingredient[] ingredients = {water, flour};
     public Step[] steps = {firstStep, secondStep};
 
-    @RequestMapping("/ingredient")
+    @RequestMapping("/ingredient-test")
     public Ingredient ingredient(@RequestParam(value="name", defaultValue = "water") String name) {
         return new Ingredient(name, 12,"oz");
     }

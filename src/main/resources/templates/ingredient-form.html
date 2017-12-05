@@ -4,23 +4,20 @@
 <head>
     <meta charset="utf-8"/>
 
-    <title>Recipe Form</title>
+    <title>Ingredient Form</title>
     <meta name="description" content="Fill out this form to add a recipe"/>
 </head>
 
 <body>
-<h1>Recipe Form</h1>
-<form action="#" th:action="@{/recipe}" th:object="${recipe}" method="post">
+<h1>Ingredient Form</h1>
+<form action="#" th:action="@{/ingredient}" th:object="${ingredient}" method="post">
     Name of Recipe:
     <input type="text" th:field="*{name}" />
-    Type of Cusine:
-    <input type="text" th:field="*{cuisine}"/>
-    Name of Ingredient:
-    <input type="text" th:field="*{name}"/>
     Amount of Ingredient:
     <input type="number" th:field="*{amount}"/>
     Type of amount:
     <input type="text" th:field="*{typeOfAmount}"/>
+    <button type="submit">Submit</button>
 </form>
 </body>
 </html>

@@ -14,15 +14,16 @@ public class RecipeController {
     public Ingredient flour = new Ingredient("bread flour",500,"grams");
     public Step firstStep = new Step("Mix together");
     public Step secondStep = new Step("Let ferment 12 hours");
-
+    public Ingredient[] ingredients = {water, flour};
+    public Step[] steps = {firstStep, secondStep};
 
     @RequestMapping("/ingredient")
     public Ingredient ingredient(@RequestParam(value="name", defaultValue = "water") String name) {
         return new Ingredient(name, 12,"oz");
     }
 
-    @RequestMapping("/recipe")
-    public Recipe recipe() {
-        return null;
+    @RequestMapping("/recipe-test")
+    public Recipe makeBread() {
+        return new Recipe("bread",ingredients,steps,"Global");
     }
 }

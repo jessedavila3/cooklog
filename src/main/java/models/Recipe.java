@@ -2,12 +2,20 @@ package models;
 
 public class Recipe {
 
+    private String name;
     private Ingredient[] ingredients;
     private Step[] steps;
+    private String cuisineType;
 
-    public Recipe(Ingredient[] ingredients, Step[] steps) {
+    public Recipe(String name, Ingredient[] ingredients, Step[] steps, String cuisineType) {
+        this.name = name;
         this.ingredients = ingredients;
         this.steps = steps;
+        this.cuisineType = cuisineType;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Ingredient[] getIngredients() {
@@ -16,5 +24,9 @@ public class Recipe {
 
     public Step[] getSteps() {
         return steps;
+    }
+
+    public String getCuisineType() {
+        return cuisineType;
     }
 }

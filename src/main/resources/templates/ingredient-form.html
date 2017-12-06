@@ -11,8 +11,9 @@
 <body>
 <h1>Ingredient Form</h1>
 <form action="#" th:action="@{/ingredient}" th:object="${ingredient}" method="post">
-    Name of Recipe:
+    Name of Ingredient:
     <input type="text" th:field="*{name}" />
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Your ingredient needs a name</p>
     Amount of Ingredient:
     <input type="number" th:field="*{amount}"/>
     Type of amount:

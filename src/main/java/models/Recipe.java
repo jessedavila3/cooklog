@@ -9,10 +9,8 @@ public class Recipe {
     @Size(min=2, max = 30)
     private String name;
 
-    @NotNull
     private Ingredient[] ingredients;
 
-    @NotNull
     private Step[] steps;
 
     private String cuisineType;

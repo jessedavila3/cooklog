@@ -13,14 +13,8 @@
 <form action="#" th:action="@{/recipe}" th:object="${recipe}" method="post">
     Name of Recipe:
     <input type="text" th:field="*{name}" />
-    Type of Cusine:
-    <input type="text" th:field="*{cuisine}"/>
-    Name of Ingredient:
-    <input type="text" th:field="*{name}"/>
-    Amount of Ingredient:
-    <input type="number" th:field="*{amount}"/>
-    Type of amount:
-    <input type="text" th:field="*{typeOfAmount}"/>
+    Type of Cuisine:
+    <input type="text" th:field="*{cuisineType}"/>
 </form>
 </body>
 </html>

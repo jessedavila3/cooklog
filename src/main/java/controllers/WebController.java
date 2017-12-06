@@ -13,6 +13,10 @@ import javax.validation.Valid;
 @Controller
 public class WebController extends WebMvcConfigurerAdapter {
 
+    @GetMapping("/")
+    public String showIndex() {
+        return "index";
+    }
     @GetMapping("/recipe")
     public String showForm(Recipe recipe) {
         return "recipe-form";

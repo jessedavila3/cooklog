@@ -1,8 +1,8 @@
-package controllers;
+package jesse.controllers;
 
-import models.Ingredient;
-import models.Recipe;
-import models.Step;
+import jesse.models.Ingredient;
+import jesse.models.Recipe;
+import jesse.models.Step;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

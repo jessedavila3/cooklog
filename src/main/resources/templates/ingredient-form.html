@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" />
 <head>
     <meta charset="utf-8"/>
 
@@ -10,7 +10,7 @@
 
 <body>
 <h1>Ingredient Form</h1>
-<form action="#" th:action="@{/ingredient}" th:object="${ingredient}" method="post">
+<form action="/ingredient" th:object="${ingredient}" method="post">
     Name of Ingredient:
     <input type="text" th:field="*{name}" />
     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Your ingredient needs a name</p>

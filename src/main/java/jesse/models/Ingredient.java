@@ -1,28 +1,37 @@
-package models;
+package jesse.models;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
+@Entity
 public class Ingredient {
 
-    @NotNull
-    @Size(min = 2, max = 30)
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+
+    @Column(nullable = false)
     private String name;
 
-    @NotNull
+    @Column
     private double amount;
 
-    @NotNull
+    @Column
     private String typeOfAmount;
 
-    public Ingredient() {
-
-    }
+    public Ingredient() {}
 
     public Ingredient(String name, double amount, String typeOfAmount) {
         this.name = name;
         this.amount = amount;
         this.typeOfAmount = typeOfAmount;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

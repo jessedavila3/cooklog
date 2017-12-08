@@ -1,4 +1,4 @@
-package models;
+package jesse.models;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

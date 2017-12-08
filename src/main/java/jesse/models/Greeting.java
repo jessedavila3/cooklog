@@ -1,4 +1,4 @@
-package models;
+package jesse.models;
 
 public class Greeting {
 

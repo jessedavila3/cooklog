@@ -2,6 +2,7 @@ package jesse.controllers;
 
 import jesse.models.Ingredient;
 import jesse.models.Recipe;
+import jesse.repositories.IngredientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,11 +17,11 @@ import javax.validation.Valid;
 @Controller
 public class WebController extends WebMvcConfigurerAdapter {
 
-//    private final IngredientRepository ingredientRepository;
+    private final IngredientRepository ingredientRepository;
 
-//    public WebController(IngredientRepository ingredientRepository) {
-//        this.ingredientRepository = ingredientRepository;
-//    }
+    public WebController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
 
     @GetMapping("/")
     public String showIndex() {
@@ -62,7 +63,7 @@ public class WebController extends WebMvcConfigurerAdapter {
         ingredient.setName(name);
         ingredient.setAmount(amount);
         ingredient.setTypeOfAmount(typeOfAmount);
-//        ingredientRepository.save(ingredient);
+        ingredientRepository.save(ingredient);
 
         return "redirect:/recipe";
     }

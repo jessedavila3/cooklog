@@ -13,7 +13,9 @@
 
 <div>
     Here is a list of ingredients you have entered.
-    <p th:text="${ingredient.name}" />
+    <div th:each="item : ${ingredients}">
+        <p th:text="${item.name}" />
+    </div>
 </div>
 </body>
 </html>

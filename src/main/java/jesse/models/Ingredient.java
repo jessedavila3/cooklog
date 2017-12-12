@@ -7,7 +7,7 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -26,11 +26,11 @@ public class Ingredient {
         this.typeOfAmount = typeOfAmount;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 

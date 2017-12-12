@@ -24,8 +24,9 @@ public class WebController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/")
-    public String showIndex() {
-        System.out.println("hello world");
+    public String showIndex(Model model) {
+        Ingredient ingredient = ingredientRepository.findOne((long)1);
+        model.addAttribute("ingredient", ingredient);
         return "index";
     }
     @GetMapping("/recipe")

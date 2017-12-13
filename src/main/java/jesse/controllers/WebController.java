@@ -25,13 +25,20 @@ public class WebController extends WebMvcConfigurerAdapter {
 
     @GetMapping("/")
     public String showIndex(Model model) {
-        Iterable<Ingredient> allIngredients = ingredientRepository.findAll();
-        model.addAttribute("ingredients", allIngredients);
         return "index";
     }
     @GetMapping("/recipe")
-    public String showForm(Recipe recipe) {
+    public String showForm(Recipe recipe, Model model) {
+        Iterable<Ingredient> allIngredients = ingredientRepository.findAll();
+        model.addAttribute("ingredients", allIngredients);
         return "recipe-form";
+    }
+
+    @GetMapping("/allIngredients")
+    public String showAllIngredients(Model model) {
+        Iterable<Ingredient> allIngredients = ingredientRepository.findAll();
+        model.addAttribute("ingredients", allIngredients);
+        return "allIngredientList";
     }
 
     @PostMapping("/recipe")

@@ -10,12 +10,5 @@
 <body>
 <h1>This is cooklog, please enjoy.</h1>
 <a href="/ingredient">Start by entering in your first ingredient.</a>
-
-<div>
-    Here is a list of ingredients you have entered.
-    <div th:each="item : ${ingredients}">
-        <p th:text="${item.name}" />
-    </div>
-</div>
 </body>
 </html>

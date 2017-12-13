@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <title>List of all Ingredients</title>
 </head>
 <body>
-$END$
+<div>
+    Here is a list of ingredients you have entered.
+    <div th:each="item : ${ingredients}">
+        <h4 th:text="${item.name}" />
+        <ul>
+            <li th:text="${item.amount}"></li>
+            <li th:text="${item.typeOfAmount}"></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

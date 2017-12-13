@@ -18,6 +18,10 @@ public class Ingredient {
     @Column
     private String typeOfAmount;
 
+    @ManyToOne
+    @JoinColumn
+    private Recipe recipe;
+
     public Ingredient() {}
 
     public Ingredient(String name, double amount, String typeOfAmount) {
@@ -56,5 +60,13 @@ public class Ingredient {
 
     public void setTypeOfAmount(String typeOfAmount) {
         this.typeOfAmount = typeOfAmount;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }

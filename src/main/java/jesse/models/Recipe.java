@@ -1,27 +1,41 @@
 package jesse.models;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
 public class Recipe {
 
-    @NotNull
-    @Size(min=2, max = 30)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(nullable = false)
     private String name;
 
-    private Ingredient[] ingredients;
+    @OneToMany(mappedBy = "recipe")
+    private List<Ingredient> ingredientList;
 
-    private Step[] steps;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "step")
+//    private List<Step> steps;
 
+    @Column
     private String cuisineType;
 
     public Recipe() {}
 
-    public Recipe(String name, Ingredient[] ingredients, Step[] steps, String cuisineType) {
+    public Recipe(String name, List<Ingredient> ingredients, String cuisineType) {
         this.name = name;
-        this.ingredients = ingredients;
-        this.steps = steps;
+        this.ingredientList = ingredients;
         this.cuisineType = cuisineType;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,23 +46,19 @@ public class Recipe {
         this.name = name;
     }
 
-    public Ingredient[] getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredientArray(int amountOfIngredients) {
-        this.ingredients = new Ingredient[amountOfIngredients];
-    }
-
-    public void setIngredients(Ingredient[] ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Step[] getSteps() {
-        return steps;
-    }
+//    public List<Step> getSteps() {
+//        return steps;
+//    }
 
     public String getCuisineType() {
         return cuisineType;
+    }
+
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
+
+    public void setIngredientList(List<Ingredient> ingredientList) {
+        this.ingredientList = ingredientList;
     }
 }

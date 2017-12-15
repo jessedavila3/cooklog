@@ -54,6 +54,10 @@ public class Recipe {
         return cuisineType;
     }
 
+    public void setCuisineType(String cuisineType) {
+        this.cuisineType = cuisineType;
+    }
+
     public List<Ingredient> getIngredientList() {
         return ingredientList;
     }

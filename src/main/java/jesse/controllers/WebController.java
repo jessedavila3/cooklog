@@ -3,6 +3,7 @@ package jesse.controllers;
 import jesse.models.Ingredient;
 import jesse.models.Recipe;
 import jesse.repositories.IngredientRepository;
+import jesse.repositories.RecipeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +19,11 @@ import javax.validation.Valid;
 public class WebController extends WebMvcConfigurerAdapter {
 
     private final IngredientRepository ingredientRepository;
+    private final RecipeRepository recipeRepository;
 
-    public WebController(IngredientRepository ingredientRepository) {
+    public WebController(IngredientRepository ingredientRepository, RecipeRepository recipeRepository) {
         this.ingredientRepository = ingredientRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @GetMapping("/")
@@ -39,17 +42,6 @@ public class WebController extends WebMvcConfigurerAdapter {
         Iterable<Ingredient> allIngredients = ingredientRepository.findAll();
         model.addAttribute("ingredients", allIngredients);
         return "allIngredientList";
-    }
-
-    @PostMapping("/recipe")
-    public String checkAndSubmitRecipe(@Valid Recipe recipe,
-                                       BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "recipe-form";
-        }
-
-        return "redirect:/index";
     }
 
     @GetMapping("/ingredient")
@@ -76,5 +68,27 @@ public class WebController extends WebMvcConfigurerAdapter {
         return "redirect:/recipe";
     }
 
+    @PostMapping("/recipe")
+    public String checkAndSubmitRecipe(@Valid @ModelAttribute Recipe recipe,
+                                       BindingResult bindingResult,
+                                       @RequestParam(name = "name") String name,
+                                       @RequestParam(name = "cuisineType") String cuisineType,
+                                       @RequestParam(name = "ingredients.id") Iterable<Long> ids) {
+
+        if (bindingResult.hasErrors()) {
+            return "recipe-form";
+        }
+        System.out.println(ids);
+        recipe.setName(name);
+        recipe.setCuisineType(cuisineType);
+        recipeRepository.save(recipe);
+
+        return "redirect:/";
+    }
+
+    private Iterable<Long> findSelectedIngredients() {
+        // take all active checkboxes and return their id's in a list.
+        return null;
+    }
 
 }

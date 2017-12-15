@@ -1,4 +1,7 @@
 package jesse.repositories;
 
-public interface RecipeRepository {
+import jesse.models.Recipe;
+import org.springframework.data.repository.CrudRepository;
+
+public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 }

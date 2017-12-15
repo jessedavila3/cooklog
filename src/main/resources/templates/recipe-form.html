@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
 
@@ -10,19 +10,18 @@
 
 <body>
 <h1>Recipe Form</h1>
-<form action="#" th:action="@{/recipe}" th:object="${recipe}" method="post">
+<form th:action="@{/recipe}" th:object="${recipe}" method="post">
     Name of Recipe:
     <input type="text" th:field="*{name}" />
     Type of Cuisine:
     <input type="text" th:field="*{cuisineType}"/>
-
-        <input type="checkbox" th:each="item : ${ingredients}">
-            <h4 th:text="${item.name}" />
+        <div th:each="ingredient : ${ingredients}">
+            <input type="checkbox" th:text="${ingredient.id}" />
             <ul>
-                <li th:text="${item.amount}"></li>
-                <li th:text="${item.typeOfAmount}"></li>
+                <li th:text="${ingredient.amount}"></li>
+                <li th:text="${ingredient.typeOfAmount}"></li>
             </ul>
-        </input>
+        </div>
     <button type="submit">Submit</button>
 </form>
 </body>
